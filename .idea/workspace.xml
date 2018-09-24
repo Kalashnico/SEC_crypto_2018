@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e7b2abb-29f6-4130-adf5-ad74c9b50fc8" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/challenge01" afterPath="$PROJECT_DIR$/challenge01" />
-      <change beforePath="$PROJECT_DIR$/challenge02" afterPath="$PROJECT_DIR$/challenge02" />
-      <change beforePath="$PROJECT_DIR$/challenge05" afterPath="$PROJECT_DIR$/challenge05" />
+      <change beforePath="$PROJECT_DIR$/challenge08" afterPath="$PROJECT_DIR$/challenge08" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,21 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="challenge05" pinned="false" current-in-tab="true">
+      <file leaf-file-name="challenge05" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/challenge05">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="660">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding>
+                <element signature="e#949#1009#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="challenge08" pinned="false" current-in-tab="false">
+      <file leaf-file-name="challenge08" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/challenge08">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="495">
+              <caret line="33" column="38" lean-forward="true" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -82,10 +81,10 @@
         <option value="$PROJECT_DIR$/test.txt" />
         <option value="$PROJECT_DIR$/test2.txt" />
         <option value="$PROJECT_DIR$/challenge06.py" />
-        <option value="$PROJECT_DIR$/challenge08" />
         <option value="$PROJECT_DIR$/challenge01" />
         <option value="$PROJECT_DIR$/challenge02" />
         <option value="$PROJECT_DIR$/challenge05" />
+        <option value="$PROJECT_DIR$/challenge08" />
       </list>
     </option>
   </component>
@@ -223,14 +222,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/challenge08">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/challenge02">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -249,8 +240,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/challenge05">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="660">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="e#949#1009#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/challenge08">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="38" lean-forward="true" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
           <folding />
         </state>
       </provider>

@@ -3,6 +3,13 @@
 import sys
 
 
+def read_file():
+    file = open(sys.argv[1], 'r')
+    file_data = file.readlines()
+
+    return file_data
+
+
 def detect_ecb(txt):
     txt_cpy = str(txt)
     chunks = [txt_cpy[i:i+16*2] for i in range(0, len(txt_cpy), 16*2)]
@@ -19,11 +26,9 @@ if __name__=='__main__':
         sys.exit(84)
 
     try:
-        file = open(sys.argv[1], 'r')
+        file_data = read_file()
     except IOError:
         sys.exit(84)
-
-    file_data = file.readlines()
 
     for i in range(0, len(file_data)):
         hex_txt = convert_to_hex(file_data[i])
