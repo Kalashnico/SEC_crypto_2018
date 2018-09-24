@@ -27,11 +27,11 @@ def read_file():
 
 	return file_data
 
-def decipher(ascii_hex):
+def decipher(hex_string):
 	strings = []
 	scores = []
 	for key in xrange(256):
-		strings.append(''.join(chr(char ^ key) for char in bytearray(ascii_hex)))
+		strings.append(''.join(chr(char ^ key) for char in bytearray(hex_string)))
 		scores.append(get_english_score(strings[key]))
 
 	best_score_key = scores.index(max(scores))
