@@ -24,10 +24,11 @@ def convert_to_baser64(hexa):
     sys.stdout.write(base64)
 
 
-if len(sys.argv) != 2:
-    sys.exit(84)
+if __name__ == '__main__':
+	if len(sys.argv) != 2:
+		sys.exit(84)
 
-hex = read_file()
-for nbHexa in range(0, len(hex)):
-    convert_to_baser64(hex[nbHexa])
-sys.exit(0)
+	hex = read_file()
+	for nbHexa in range(0, len(hex)):
+		convert_to_baser64(hex[nbHexa])
+	sys.exit(0)

@@ -23,9 +23,9 @@ def read_file():
 def xor_strings(xs, ys):
     return "".join(chr(ord(x) ^ ord(y)) for x, y in zip(xs, ys))
 
+if __name__ == '__main__':
+	if len(sys.argv) != 2:
+		sys.exit(84)
 
-if len(sys.argv) != 2:
-    sys.exit(84)
-
-read_file()
-sys.exit(0)
+	read_file()
+	sys.exit(0)
