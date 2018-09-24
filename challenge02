@@ -26,6 +26,9 @@ def xor_strings(xs, ys):
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
 		sys.exit(84)
+    try:
+    	read_file()
+    except IOError:
+        sys.exit(84)
 
-	read_file()
 	sys.exit(0)
