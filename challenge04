@@ -54,7 +54,7 @@ def find_best_line(hex_strings):
 
 	best_line_index = scores.index(max(scores))
 
-	print (str(line_number[best_line_index]) + " " + str('{:x}'.format(keys[best_line_index])))
+	print (str(line_number[best_line_index]) + " " + str('{:x}'.format(keys[best_line_index])).upper())
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
