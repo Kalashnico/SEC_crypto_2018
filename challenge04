@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
 
 import sys
+import binascii
 
 def get_english_score(string):
 
@@ -30,7 +31,7 @@ def read_file():
 def decipher(hex_string):
 	strings = []
 	scores = []
-	for key in xrange(256):
+	for key in range(256):
 		strings.append(''.join(chr(char ^ key) for char in bytearray(hex_string)))
 		scores.append(get_english_score(strings[key]))
 
@@ -38,18 +39,14 @@ def decipher(hex_string):
 
 	return best_score_key, scores[best_score_key]
 
-if __name__ == '__main__':
-	if len(sys.argv) != 2:
-		sys.exit(84)
-
+def find_best_line(hex_strings):
 	i = 1
 	keys = []
 	scores = []
 	line_number = []
 
-	hex_strings = read_file()
 	for hex_string in hex_strings:
-		key, score = decipher(hex_string.strip('\n').decode("hex"))
+		key, score = decipher(binascii.unhexlify(hex_string.strip('\n')))
 		keys.append(key)
 		scores.append(score)
 		line_number.append(i)
@@ -58,5 +55,16 @@ if __name__ == '__main__':
 	best_line_index = scores.index(max(scores))
 
 	print (str(line_number[best_line_index]) + " " + str('{:x}'.format(keys[best_line_index])))
+
+if __name__ == '__main__':
+	if len(sys.argv) != 2:
+		sys.exit(84)
+
+	try:
+		hex_strings = read_file()
+	except IOError:
+		sys.exit(84)
+
+	find_best_line(hex_strings)
 
 	sys.exit(0)

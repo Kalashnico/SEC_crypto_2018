@@ -24,10 +24,10 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         sys.exit(84)
 
-    try:
-        hex = read_file()
-    except IOError:
-        sys.exit(84)
+	try:
+		hex = read_file()
+	except IOError:
+		sys.exit(84)
 
 
     for line_hexa in hex:
