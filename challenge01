@@ -28,10 +28,10 @@ if __name__ == '__main__':
 	if len(sys.argv) != 2:
 	    sys.exit(84)
 
-    try:
-        hex = read_file()
-    except IOError:
-        sys.exit(84)
+	try:
+		hex = read_file()
+	except IOError:
+		sys.exit(84)
 
 	for nbHexa in range(0, len(hex)):
 		convert_to_baser64(hex[nbHexa])
