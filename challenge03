@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
 
 import sys
+import binascii
 
 def get_english_score(string):
 
@@ -30,18 +31,23 @@ def read_file():
 def decipher(hex_string):
 	strings = []
 	scores = []
-	for key in xrange(256):
+	for key in range(256):
 		strings.append(''.join(chr(char ^ key) for char in bytearray(hex_string)))
 		scores.append(get_english_score(strings[key]))
 
 	best_score_key = scores.index(max(scores))
-	print '{:x}'.format(best_score_key)
+	print ('{:x}'.format(best_score_key))
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
 		sys.exit(84)
 
-	hex_str = read_file()
-	decipher(hex_str.decode("hex"))
+	try:
+		files_contents = read_file()
+	except IOError:
+		sys.exit(84)
+
+	hex_str = binascii.unhexlify(files_contents)
+	decipher(hex_str)
 
 	sys.exit(0)
