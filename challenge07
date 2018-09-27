@@ -1,7 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
 
 import base64
 import sys
+import binascii
 from Crypto.Cipher import AES
 
 
@@ -18,7 +19,7 @@ def read_file():
 class AESCipher(object):
 
     def __init__(self, key):
-        self.key = key.decode('hex')
+        self.key = binascii.unhexlify(key)
 
     def decrypt(self, msg):
         msg = base64.b64decode(msg)
@@ -28,10 +29,19 @@ class AESCipher(object):
 
 if __name__ == '__main__':
 
-    file_data = read_file()
+    if len(sys.argv) != 2:
+        sys.exit(84)
+
+    try:
+        file_data = read_file()
+    except IOError:
+        sys.exit(84)
+
     cipher = AESCipher(file_data[0])
 
     decrypted_msg = cipher.decrypt(file_data[1])
-    decrypted_msg = decrypted_msg.encode('base64')
-    decrypted_msg = decrypted_msg.rstrip()
+
+    decrypted_msg = base64.b64encode(decrypted_msg)
+    decrypted_msg = decrypted_msg.decode('utf-8').rstrip()
     print("%s" % decrypted_msg)
+    sys.exit(0)
