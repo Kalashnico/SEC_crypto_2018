@@ -22,8 +22,8 @@ BINARIES    = $(SRCS:%.py=%)
 all: $(BINARIES)
 
 %: %.py
+	chmod +x $<
 	cp $< $@
-	chmod +x $@
 
 clean:
 	rm -f $(BINARIES)
