@@ -1,38 +1,35 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
 
 import sys
+import binascii
+
 
 def read_file():
     file_open = open(sys.argv[1], "r")
     file_data = file_open.readlines()
-    data = []
-    for fdata in range(0, len(file_data)):
-        for n in range(0, len(file_data[fdata]) - 1):
-            if file_data[fdata][n] == " ":
-                continue
-            data.append(file_data[fdata][n])
 
-        data_hex = []
-        for i in range(0, len(data) - 1):
-            hex = data[i] + data[i + 1]
-            if i % 2 == 0:
-                data_hex.append(hex)
-        return data_hex
+    i = 0
+    for fdata in file_data:
+        file_data[i] = fdata.rstrip()
+        i += 1
+    return file_data
+
 
 def convert_to_baser64(hexa):
-    base64 = hexa.decode("hex").encode("base64")
-    sys.stdout.write(base64)
+    base64 = binascii.b2a_base64(binascii.unhexlify(hexa))
+    print(base64.decode('utf-8').rstrip())
 
 
 if __name__ == '__main__':
-	if len(sys.argv) != 2:
-	    sys.exit(84)
+    if len(sys.argv) != 2:
+        sys.exit(84)
 
 	try:
 		hex = read_file()
 	except IOError:
 		sys.exit(84)
 
-	for nbHexa in range(0, len(hex)):
-		convert_to_baser64(hex[nbHexa])
-	sys.exit(0)
+
+    for line_hexa in hex:
+        convert_to_baser64(line_hexa)
+sys.exit(0)

@@ -1,6 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.6
 
 import sys
+import codecs
+import base64
 
 
 def read_file():
@@ -17,8 +19,9 @@ def detect_ecb(txt):
 
 
 def convert_to_hex(txt):
-    hexa  = txt.decode("base64").encode("hex")
-    return hexa
+    decoded = base64.b64decode(txt)
+    hexa = codecs.encode(decoded, 'hex')
+    return hexa.decode('utf-8').strip()
 
 
 if __name__=='__main__':
