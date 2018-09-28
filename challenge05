@@ -32,10 +32,6 @@ def read_file():
     print(xored.upper())
 
 
-def xor_strings(xs, ys):
-    return "".join(chr(ord(x) ^ ord(y)) for x, y in zip(xs, ys))
-
-
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         sys.exit(84)

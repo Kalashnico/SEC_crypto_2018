@@ -15,7 +15,7 @@ def read_file():
     return file_data
 
 
-def convert_to_baser64(hexa):
+def convert_to_base64(hexa):
     base64 = binascii.b2a_base64(binascii.unhexlify(hexa))
     print(base64.decode('utf-8').rstrip())
 
@@ -31,5 +31,5 @@ if __name__ == '__main__':
 
 
     for line_hexa in hex:
-        convert_to_baser64(line_hexa)
+        convert_to_base 64(line_hexa)
 sys.exit(0)
