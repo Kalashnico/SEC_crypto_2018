@@ -24,7 +24,11 @@ def get_english_score(string):
 
 def read_file():
 	file_open = open(sys.argv[1], "r")
-	file_data = file_open.readline()
+
+	try:
+		file_data = file_open.readline()
+	except UnicodeDecodeError:
+		sys.exit(84)
 
 	return file_data
 
@@ -113,6 +117,9 @@ if __name__ == '__main__':
 	try:
 		files_contents = read_file()
 	except IOError:
+		sys.exit(84)
+
+	if len(files_contents) == 0:
 		sys.exit(84)
 
 	hex_str = files_contents.strip('\n')
