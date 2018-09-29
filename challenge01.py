@@ -20,7 +20,10 @@ def read_file():
 
 
 def convert_to_baser64(hexa):
-    base64 = binascii.b2a_base64(binascii.unhexlify(hexa))
+    try:
+        base64 = binascii.b2a_base64(binascii.unhexlify(hexa))
+    except Exception:
+        sys.exit(84)
     print(base64.decode('utf-8').rstrip())
 
 
