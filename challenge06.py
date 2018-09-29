@@ -52,11 +52,14 @@ def find_best_key(crypted_text, keys):
 		result = ''
 		index = 0
 		for char in crypted_text:
-			result += ''.join(chr(char ^ ord(key[index])))
+			if index == len(key):
+				index = 0
 			if index + 1 == len(key):
+				result += ''.join(chr(char ^ int(key[index] + key[0], 16)))
 				index = 0
 			else:
-				index +=1
+				result += ''.join(chr(char ^ int(key[index] + key[index + 1], 16)))
+				index += 2
 		results.append(result)
 		scores.append(get_english_score(results[key_index]))
 		key_index += 1
@@ -70,12 +73,19 @@ def break_repeating_xor(crypted_text):
 
 	for keysize in range(5, 41):
 		distances = []
-		chunks = [crypted_text[i : i + keysize] for i in range(0, keysize * 2, keysize)]
+		chunks = [crypted_text[i : i + keysize] for i in range(0, len(crypted_text), keysize)]
 
-		chunk1 = chunks[0]
-		chunk2 = chunks[1]
+		while True:
+			try:
+				chunk1 = chunks[0]
+				chunk2 = chunks[1]
 
-		distances.append(calculate_hamming_distance(chunk1, chunk2) / keysize)
+				distances.append(calculate_hamming_distance(chunk1, chunk2) / keysize)
+
+				del chunks[0]
+				del chunks[1]
+			except Exception:
+				break
 
 		result = {
 			'key': keysize,
