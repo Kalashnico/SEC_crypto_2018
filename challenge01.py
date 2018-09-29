@@ -6,7 +6,11 @@ import binascii
 
 def read_file():
     file_open = open(sys.argv[1], "r")
-    file_data = file_open.readlines()
+
+    try:
+        file_data = file_open.readlines()
+    except UnicodeDecodeError:
+        sys.exit(84)
 
     i = 0
     for fdata in file_data:
@@ -29,6 +33,8 @@ if __name__ == '__main__':
     except IOError:
         sys.exit(84)
 
+    if  len(hex) == 0:
+        sys.exit(84)
 
     for line_hexa in hex:
         convert_to_baser64(line_hexa)
