@@ -12,7 +12,7 @@ def get_english_score(string):
 		'm': .02406, 'n': .06749, 'o': .07507, 'p': .01929,
 		'q': .00095, 'r': .05987, 's': .06327, 't': .09056,
 		'u': .02758, 'v': .00978, 'w': .02360, 'x': .00150,
-		'y': .01974, 'z': .00074, ' ': .13000
+		'y': .01974, 'z': .00074, ' ': .19182
 	}
 
 	score = 0
@@ -24,7 +24,7 @@ def get_english_score(string):
 
 def read_file():
 	file_open = open(sys.argv[1], "r")
-	file_data = file_open.readlines()
+	file_data = file_open.readline()
 
 	return file_data
 
@@ -36,35 +36,18 @@ def decipher(hex_string):
 		scores.append(get_english_score(strings[key]))
 
 	best_score_key = scores.index(max(scores))
-
-	return best_score_key, scores[best_score_key]
-
-def find_best_line(hex_strings):
-	i = 1
-	keys = []
-	scores = []
-	line_number = []
-
-	for hex_string in hex_strings:
-		key, score = decipher(binascii.unhexlify(hex_string.strip('\n')))
-		keys.append(key)
-		scores.append(score)
-		line_number.append(i)
-		i += 1
-
-	best_line_index = scores.index(max(scores))
-
-	print (str(line_number[best_line_index]) + " " + str('{:x}'.format(keys[best_line_index])))
+	print ('{:x}'.format(best_score_key).upper())
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
 		sys.exit(84)
 
 	try:
-		hex_strings = read_file()
+		files_contents = read_file()
 	except IOError:
 		sys.exit(84)
 
-	find_best_line(hex_strings)
+	hex_str = binascii.unhexlify(files_contents)
+	decipher(hex_str)
 
 	sys.exit(0)
