@@ -19,7 +19,7 @@ def read_file():
     return file_data
 
 
-def convert_to_baser64(hexa):
+def convert_to_base64(hexa):
     try:
         base64 = binascii.b2a_base64(binascii.unhexlify(hexa))
     except Exception:
@@ -40,6 +40,6 @@ if __name__ == '__main__':
         sys.exit(84)
 
     for line_hexa in hex:
-        convert_to_baser64(line_hexa)
+        convert_to_base64(line_hexa)
 
     sys.exit(0)
