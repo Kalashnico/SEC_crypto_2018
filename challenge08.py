@@ -7,7 +7,10 @@ import base64
 
 def read_file():
     file = open(sys.argv[1], 'r')
-    file_data = file.readlines()
+    try:
+        file_data = file.readlines()
+    except UnicodeDecodeError:
+        sys.exit(84)
 
     return file_data
 
