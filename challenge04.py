@@ -24,7 +24,11 @@ def get_english_score(string):
 
 def read_file():
 	file_open = open(sys.argv[1], "r")
-	file_data = file_open.readlines()
+
+	try:
+		file_data = file_open.readlines()
+	except UnicodeDecodeError:
+		sys.exit(84)
 
 	return file_data
 
@@ -54,7 +58,11 @@ def find_best_line(hex_strings):
 
 	best_line_index = scores.index(max(scores))
 
-	print (str(line_number[best_line_index]) + " " + str('{:x}'.format(keys[best_line_index])).upper())
+	print (str(line_number[best_line_index]) + " ", end='')
+	if keys[best_line_index] ==0:
+		print("00")
+	else:
+		print(str('{:x}'.format(keys[best_line_index])).upper())
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
@@ -63,6 +71,9 @@ if __name__ == '__main__':
 	try:
 		hex_strings = read_file()
 	except IOError:
+		sys.exit(84)
+
+	if len(hex_strings) == 0:
 		sys.exit(84)
 
 	find_best_line(hex_strings)
