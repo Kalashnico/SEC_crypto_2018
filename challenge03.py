@@ -57,7 +57,7 @@ if __name__ == '__main__':
 	if len(files_contents) == 0:
 		sys.exit(84)
 
-	hex_str = binascii.unhexlify(files_contents)
+	hex_str = binascii.unhexlify(files_contents.strip('\n'))
 	decipher(hex_str)
 
 	sys.exit(0)
