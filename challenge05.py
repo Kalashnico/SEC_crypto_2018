@@ -4,8 +4,14 @@ import sys
 
 
 def read_file():
-    file = open(sys.argv[1], "r")
-    file_data = file.readlines()
+    file_open = open(sys.argv[1], "r")
+    try:
+        file_data = file_open.readlines()
+    except UnicodeDecodeError:
+        sys.exit(84)
+
+    if len(file_data) != 2:
+        sys.exit(84)
 
     hex_key = file_data[0].rstrip()
     hex_string = file_data[1].rstrip()
