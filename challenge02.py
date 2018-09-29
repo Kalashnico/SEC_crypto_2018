@@ -13,6 +13,8 @@ def read_file():
         sys.exit(84)
 
     xored = hex(int(file_data[0].strip(), 16) ^ int(file_data[1].strip(), 16)).lstrip('0x')
+    if len(xored) % 2 == 1:
+        xored = '0' + xored
     print(xored.upper())
 
 
