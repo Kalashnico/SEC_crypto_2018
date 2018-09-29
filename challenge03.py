@@ -24,7 +24,11 @@ def get_english_score(string):
 
 def read_file():
 	file_open = open(sys.argv[1], "r")
-	file_data = file_open.readline()
+
+	try:
+		file_data = file_open.readline()
+	except UnicodeDecodeError:
+		sys.exit(84)
 
 	return file_data
 
@@ -36,7 +40,10 @@ def decipher(hex_string):
 		scores.append(get_english_score(strings[key]))
 
 	best_score_key = scores.index(max(scores))
-	print ('{:x}'.format(best_score_key).upper())
+	if best_score_key == 0:
+		print ("00")
+	else:
+		print ('{:x}'.format(best_score_key).upper())
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
@@ -45,6 +52,9 @@ if __name__ == '__main__':
 	try:
 		files_contents = read_file()
 	except IOError:
+		sys.exit(84)
+
+	if len(files_contents) == 0:
 		sys.exit(84)
 
 	hex_str = binascii.unhexlify(files_contents)
